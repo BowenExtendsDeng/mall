@@ -1,6 +1,7 @@
 package com.mall.config;
 
 import com.mall.shiro.AccountRealm;
+import com.mall.shiro.JwtFilter;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.mgt.SessionsSecurityManager;
 import org.apache.shiro.realm.Realm;
@@ -13,8 +14,10 @@ import org.apache.shiro.spring.web.config.ShiroFilterChainDefinition;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.crazycake.shiro.RedisCacheManager;
 import org.crazycake.shiro.RedisSessionDAO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 
 import javax.servlet.Filter;
 import java.util.HashMap;
@@ -32,6 +35,9 @@ import java.util.Map;
  */
 @Configuration
 public class ShiroConfig {
+
+    @Autowired
+    JwtFilter jwtFilter;
     @Bean
     public SessionManager sessionManager(RedisSessionDAO redisSessionDAO){
         DefaultSessionManager sessionManager = new DefaultSessionManager();
@@ -62,13 +68,13 @@ public class ShiroConfig {
 
     @Bean("shiroFilterFactoryBean")
     public ShiroFilterFactoryBean shiroFilter(SecurityManager securityManager,
-                                              ShiroFilterChainDefinition shiroFilterChainDefinition){
+                                              ShiroFilterChainDefinition shiroFilterChainDefinition) {
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
         shiroFilterFactoryBean.setSecurityManager(securityManager);
 
-//        Map<String, Filter> filters = new HashMap<>();
-//        filters.put("jwt", jwtFilter);
-//        shiroFilterFactoryBean.setFilters(filters);
+        Map<String, Filter> filters = new HashMap<>();
+        filters.put("jwt", jwtFilter);
+        shiroFilterFactoryBean.setFilters(filters);
 
         Map<String, String> filterMap = shiroFilterChainDefinition.getFilterChainMap();
 
