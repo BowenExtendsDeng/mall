@@ -17,10 +17,4 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/mall/user")
 public class UserController{
-    @Autowired
-    private IUserService userService;
-
-    public Object index(){
-        return userService.getById(1);
-    }
 }

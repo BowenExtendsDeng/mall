@@ -11,8 +11,4 @@ class MallApplicationTests {
     @Test
     void contextLoads() {
     }
-
-    @Test
-    public
-
 }
