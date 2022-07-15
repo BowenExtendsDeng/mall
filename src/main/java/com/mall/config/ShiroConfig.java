@@ -61,13 +61,18 @@ public class ShiroConfig {
     }
 
     @Bean("shiroFilterFactoryBean")
-    public ShiroFilterFactoryBean shiroFilter(SecurityManager securityManager){
+    public ShiroFilterFactoryBean shiroFilter(SecurityManager securityManager,
+                                              ShiroFilterChainDefinition shiroFilterChainDefinition){
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
         shiroFilterFactoryBean.setSecurityManager(securityManager);
 
 //        Map<String, Filter> filters = new HashMap<>();
 //        filters.put("jwt", jwtFilter);
 //        shiroFilterFactoryBean.setFilters(filters);
+
+        Map<String, String> filterMap = shiroFilterChainDefinition.getFilterChainMap();
+
+        shiroFilterFactoryBean.setFilterChainDefinitionMap(filterMap);
         return shiroFilterFactoryBean;
     }
 }
