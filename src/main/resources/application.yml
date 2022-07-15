@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    username: root
+    password: admin
+    url: jdbc:mysql://localhost:3306/mybatis_plus?userSSL=false&useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8
+    driverClassName: com.mysql.cj.jdbc.Driver
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
