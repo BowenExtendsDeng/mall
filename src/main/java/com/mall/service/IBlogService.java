@@ -2,6 +2,7 @@ package com.mall.service;
 
 import com.mall.entity.Blog;
 import com.baomidou.mybatisplus.extension.service.IService;
+import org.springframework.stereotype.Service;
 
 /**
  * <p>
@@ -11,6 +12,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @author bowen
  * @since 2022-07-15
  */
+@Service
 public interface IBlogService extends IService<Blog> {
 
 }
