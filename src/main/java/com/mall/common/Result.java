@@ -25,6 +25,9 @@ public class Result {
         return new Result(code, msg, data);
     }
 
+    public static Result fail(String msg) {
+        return new Result(200, msg, null);
+    }
     @Contract("_, _ -> new")
     public static @NotNull Result success(String msg, Object data) {
         return new Result(200, msg, data);

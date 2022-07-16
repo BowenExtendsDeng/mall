@@ -7,3 +7,8 @@ spring:
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+markerhub:
+  jwt:
+    secret: fe42e520348f86b67cde581c0f9eb5
+    expires: 604800
+    header: Authorization
