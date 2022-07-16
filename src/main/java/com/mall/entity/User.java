@@ -1,14 +1,18 @@
 package com.mall.entity;
 
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author bowen
@@ -17,7 +21,10 @@ import lombok.EqualsAndHashCode;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class User{
+@Accessors(chain = true)
+@TableName("user")
+@EqualsAndHashCode(callSuper = false)
+public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

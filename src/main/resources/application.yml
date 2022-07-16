@@ -7,6 +7,10 @@ spring:
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+shrio-redis:
+  enabled: true
+  redis-manager:
+    host: 127.0.0.1:6379
 markerhub:
   jwt:
     secret: fe42e520348f86b67cde581c0f9eb5
