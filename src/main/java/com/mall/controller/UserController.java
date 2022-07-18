@@ -1,8 +1,12 @@
 package com.mall.controller;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import org.springframework.web.bind.annotation.RestController;
+import com.mall.common.Result;
+import com.mall.entity.User;
+import com.mall.service.UserService;
+import org.apache.shiro.authz.annotation.RequiresAuthentication;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * <p>
@@ -15,4 +19,19 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/mall/user")
 public class UserController{
+
+    @Autowired
+    UserService userService;
+
+    @RequiresAuthentication
+    @GetMapping("/info")
+    public Result info() {
+        User user = userService.getById(1);
+        return Result.success(user);
+    }
+
+    @PostMapping("save")
+    public Result save(@Validated @RequestBody User user) {
+        return Result.success(user);
+    }
 }

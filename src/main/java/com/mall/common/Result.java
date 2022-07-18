@@ -1,5 +1,6 @@
 package com.mall.common;
 
+import com.mall.entity.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -31,5 +32,9 @@ public class Result {
     @Contract("_, _ -> new")
     public static @NotNull Result success(String msg, Object data) {
         return new Result(200, msg, data);
+    }
+
+    public static Result success(User user) {
+        return new Result(200, "success", user);
     }
 }
